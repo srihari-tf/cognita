@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Check out repository code
+      - name: Check out repository codes
         uses: actions/checkout@v3
       - name: Install truefoundry
         run: pip install -U --pre truefoundry
