@@ -26,7 +26,7 @@ components:
       build_source:
         ref: f7db690f5c9574e7f9a03e200c163249e9eb6352
         type: git
-        repo_url: https://github.com/truefoundry/cognita
+        repo_url: https://github.com/srihari-tf/cognita
         branch_name: release
     params:
       - name: collection_name
@@ -84,7 +84,7 @@ components:
       build_source:
         ref: f7db690f5c9574e7f9a03e200c163249e9eb6352
         type: git
-        repo_url: https://github.com/truefoundry/cognita
+        repo_url: https://github.com/srihari-tf/cognita
         branch_name: release
     ports:
       - host: cas.truefoundry.com
@@ -144,7 +144,7 @@ components:
       build_source:
         ref: f7db690f5c9574e7f9a03e200c163249e9eb6352
         type: git
-        repo_url: https://github.com/truefoundry/cognita
+        repo_url: https://github.com/srihari-tf/cognita
         branch_name: release
     ports:
       - host: cas.truefoundry.com
