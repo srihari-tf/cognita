@@ -1,0 +1,26 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+      - ci-cd
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Install truefoundry
+        run: pip install -U --pre truefoundry
+      - name: Generate truefoundry-patched.yaml
+        run: |
+          tfy patch --file truefoundry.yaml \
+            --filter='.components[].image.build_source.ref = "${{ github.sha }}"' \
+            --filter='.components[].image.build_source.branch_name = "${{ github.ref_name }}"' \
+            --output-file truefoundry-patched.yaml
+      - name: Deploy
+        run: tfy deploy --workspace-fqn tfy-prod-euwe1:cognita-internal --file truefoundry-patched.yaml --no-wait
+        env:
+          TFY_API_KEY: ${{ secrets.TFY_API_KEY }}
+          TFY_HOST: https://internal.truefoundry.cloud
