@@ -34,13 +34,13 @@ components:
       - name: data_source_fqn
         param_type: string
       - name: data_ingestion_run_name
-        default: ''
+        default: ""
         param_type: string
       - name: data_ingestion_mode
         default: INCREMENTAL
         param_type: string
       - name: raise_error_on_failure
-        default: 'False'
+        default: "False"
         param_type: string
     retries: 0
     trigger:
@@ -129,8 +129,8 @@ components:
   - env:
       VITE_QA_FOUNDRY_URL: https://cas.truefoundry.com/api
       VITE_DOCS_QA_STANDALONE_PATH: /
-      VITE_DOCS_QA_ENABLE_STANDALONE: 'true'
-      VITE_DOCS_QA_DELETE_COLLECTIONS: 'true'
+      VITE_DOCS_QA_ENABLE_STANDALONE: "true"
+      VITE_DOCS_QA_DELETE_COLLECTIONS: "true"
     name: cas-frontend
     type: service
     image:
@@ -138,7 +138,7 @@ components:
       build_spec:
         type: dockerfile
         build_args:
-          VITE_DOCS_QA_DELETE_COLLECTIONS: 'true'
+          VITE_DOCS_QA_DELETE_COLLECTIONS: "true"
         dockerfile_path: ./frontend/Dockerfile
         build_context_path: ./frontend
       build_source:
@@ -194,7 +194,7 @@ components:
           effect: NoSchedule
           operator: Equal
         - key: cloud.google.com/gke-spot
-          value: 'true'
+          value: "true"
           effect: NoSchedule
           operator: Equal
       replicaCount: 2
@@ -225,9 +225,9 @@ components:
       ephemeral_storage_limit: 2000
       ephemeral_storage_request: 1500
   - env:
-      PORT: '8000'
+      PORT: "8000"
       API_KEY: tfy-infinity-svc
-      BATCH_SIZE: '4'
+      BATCH_SIZE: "4"
     name: cas-infinity
     type: service
     image:
